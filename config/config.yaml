@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+database:
+  path: "./students.db"
+
+cors:
+  allowedOrigins:
+    - "http://localhost:3000"
+  allowedMethods:
+    - "GET"
+    - "POST"
+    - "PUT"
+    - "DELETE"
+    - "OPTIONS"
+  allowedHeaders:
+    - "Origin"
+    - "Content-Type" 
