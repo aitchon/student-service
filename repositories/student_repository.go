@@ -61,6 +61,10 @@ func (r *StudentRepository) CreateStudent(student *models.Student) error {
 	result, err := r.db.Exec("INSERT INTO students (name) VALUES (?)",
 		student.Name)
 	if err != nil {
+		// SQLite returns "UNIQUE constraint failed" error when unique constraint is violated
+		if err.Error() == "UNIQUE constraint failed: students.name" {
+			return ErrDuplicateName
+		}
 		return err
 	}
 
